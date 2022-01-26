@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Avatar from './components/avatar/Avatar';
+import Button from './components/button/Button';
+
+
 
 ReactDOM.render(
   <React.StrictMode>

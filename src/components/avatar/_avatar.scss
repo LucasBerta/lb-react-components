@@ -1,0 +1,49 @@
+@import "../../core/util";
+@import "../../core/base";
+
+.lb-avatar {
+  display: inline-flex;
+  border-radius: 50%;
+  border: 1px solid var(--color-black);
+  overflow: hidden;
+  box-sizing: border-box;
+  @extend .centered-content;
+
+  > .lb-avatar__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  // Sizes
+  &,
+  &--md {
+    width: 64px;
+    height: 64px;
+  }
+
+  &--sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--lg {
+    width: 96px;
+    height: 96px;
+  }
+
+  // Variants
+  &,
+  &--circular {
+    @extend %circular;
+  }
+
+  &--rounded {
+    @extend %rounded;
+  }
+
+  &--square {
+    @extend %square;
+  }
+}

@@ -1,0 +1,20 @@
+.centered-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%circular {
+  border-radius: 50%;
+}
+
+%rounded {
+  border-radius: 4px;
+}
+
+%square {
+  border-radius: 0;
+}
+
+$box-shadow-light: 0 0.5rem 1.8rem -0.5rem rgba(#000, 0.7);
+$box-shadow-mid: 0 0.8rem 1.6rem -0.4rem rgba(#000, 0.9);
