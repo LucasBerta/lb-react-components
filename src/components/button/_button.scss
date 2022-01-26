@@ -14,6 +14,39 @@ $lg-font-size: 0.9375rem;
 
 $letter-spacing: 0.02857em;
 
+@mixin lighten-button-background($color) {
+  &:not(:disabled) {
+    &:hover::before {
+      background-color: $color;
+      opacity: 0.15;
+    }
+
+    &:active::before {
+      background-color: $color;
+      opacity: 0.1;
+    }
+  }
+}
+
+@mixin darken-button-background($color) {
+  &:not(:disabled)::before {
+    background-color: $color;
+    opacity: 1;
+  }
+
+  &:not(:disabled) {
+    &:hover::before {
+      background-color: $color;
+      filter: brightness(0.85);
+    }
+
+    &:active::before {
+      background-color: $color;
+      filter: brightness(0.92);
+    }
+  }
+}
+
 .lb-button {
   @extend .centered-content;
   position: relative;
@@ -26,11 +59,26 @@ $letter-spacing: 0.02857em;
   cursor: pointer;
   box-sizing: border-box;
 
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $box-shadow-mid;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: $box-shadow-light;
+  }
+
   @extend %rounded;
-  transition: all $default-transition-duration $default-transition-timing;
 
   > * {
     z-index: 1;
+  }
+
+  &,
+  &::before,
+  &::before {
+    transition: all $default-transition-duration $default-transition-timing;
   }
 
   &::before,
@@ -44,9 +92,11 @@ $letter-spacing: 0.02857em;
     height: 100%;
     border-radius: inherit;
     z-index: 0;
+    opacity: 0;
   }
 
-  &--static {
+  &--static,
+  &:disabled {
     transform: translateY(0) !important;
     box-shadow: none !important;
   }
@@ -107,50 +157,25 @@ $letter-spacing: 0.02857em;
   }
 
   &--contained {
-    @include darken-button-background;
-
+    background-color: transparent;
     &.lb-button--primary {
       color: var(--color-white);
-      background-color: var(--color-primary);
+      @include darken-button-background(var(--color-primary));
     }
 
     &.lb-button--accent {
       color: var(--color-white);
-      background-color: var(--color-accent);
-
-      &:hover {
-        background-color: var(--color-accent);
-      }
-
-      &:active {
-        background-color: var(--color-accent);
-      }
+      @include darken-button-background(var(--color-accent));
     }
 
     &.lb-button--info {
       color: var(--color-white);
-      background-color: var(--color-info);
-
-      &:hover {
-        background-color: var(--color-info);
-      }
-
-      &:active {
-        background-color: var(--color-info);
-      }
+      @include darken-button-background(var(--color-info));
     }
 
     &.lb-button--success {
       color: var(--color-white);
-      background-color: var(--color-success);
-
-      &:hover {
-        background-color: var(--color-success);
-      }
-
-      &:active {
-        background-color: var(--color-success);
-      }
+      @include darken-button-background(var(--color-success));
     }
   }
 
@@ -158,23 +183,19 @@ $letter-spacing: 0.02857em;
   &--outlined {
     background-color: transparent;
 
-    &.lb-button--primary:hover,
-    &.lb-button--primary:active {
+    &.lb-button--primary {
       @include lighten-button-background(var(--color-primary));
     }
 
-    &.lb-button--accent:hover,
-    &.lb-button--accent:active {
+    &.lb-button--accent {
       @include lighten-button-background(var(--color-accent));
     }
 
-    &.lb-button--info:hover,
-    &.lb-button--info:active {
+    &.lb-button--info {
       @include lighten-button-background(var(--color-info));
     }
 
-    &.lb-button--success:hover,
-    &.lb-button--success:active {
+    &.lb-button--success {
       @include lighten-button-background(var(--color-success));
     }
   }
@@ -230,18 +251,6 @@ $letter-spacing: 0.02857em;
       &:active {
         background-color: rgba(var(--color-disabled), 0.3);
       }
-    }
-  }
-
-  &:not(:disabled) {
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: $box-shadow-mid;
-    }
-
-    &:active {
-      transform: translateY(-1px);
-      box-shadow: $box-shadow-light;
     }
   }
 }
