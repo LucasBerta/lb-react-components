@@ -1,3 +1,4 @@
+import { transformClassName } from '../../core/util';
 import './_avatar.scss';
 
 function Avatar(props) {
@@ -5,10 +6,10 @@ function Avatar(props) {
   return (
     <div
       {...props}
-      className={`lb-avatar
+      className={transformClassName(`lb-avatar
                   lb-avatar--${size}
                   lb-avatar--${variant}
-                  ${className}`}
+                  ${className}`)}
     >
       {children || <img src={src} alt='Avatar image' className='lb-avatar__img' />}
     </div>
