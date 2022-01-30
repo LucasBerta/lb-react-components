@@ -1,0 +1,13 @@
+@import "core/colors";
+@import "core/util";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  @extend .centered-content;
+
+  button {
+    margin: 8px;
+  }
+}

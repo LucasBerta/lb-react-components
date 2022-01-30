@@ -1,0 +1,59 @@
+@import "../../core/util";
+@import "../../core/animations";
+
+$standard-size: 1.2rem;
+$dot-size: 1rem;
+
+.lb-badge {
+  background-color: orangered;
+  position: absolute;
+  color: #fff;
+  font-size: $standard-size * 0.6;
+  font-style: inherit;
+  font-weight: 400;
+
+  z-index: 100;
+  @extend .centered-content;
+
+  transition: all $default-transition-duration $default-transition-timing;
+
+  &--standard {
+    min-width: $standard-size;
+    height: $standard-size;
+    top: ($standard-size / 2) * -1;
+    right: ($standard-size / 2) * -1;
+    border-radius: 100px;
+    padding: 4px;
+
+    &.lb-badge--overlap-circular {
+      top: $standard-size / 4 * -1;
+      right: $standard-size / 4 * -1;
+    }
+
+    &.lb-badge--overlap-rectangular {
+      top: $standard-size / 2 * -1;
+      right: $standard-size / 2 * -1;
+    }
+  }
+
+  &--dot {
+    width: $dot-size;
+    height: $dot-size;
+    border-radius: 100px;
+
+    &.lb-badge--overlap-circular {
+      top: $dot-size / 4 * -1;
+      right: $dot-size / 4 * -1;
+    }
+
+    &.lb-badge--overlap-rectangular {
+      top: $dot-size / 2 * -1;
+      right: $dot-size / 2 * -1;
+    }
+  }
+
+  &--invisible {
+    visibility: hidden;
+    transform: scale(0);
+  }
+}

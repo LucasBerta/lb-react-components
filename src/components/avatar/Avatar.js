@@ -2,10 +2,11 @@ import { transformClassName } from '../../core/util';
 import './_avatar.scss';
 
 function Avatar(props) {
-  const { className = '', src, size = 'md', variant = 'circular', children } = props;
+  const { className = '', src, size = 'md', variant = 'circular', children, ...nestedProps } = props;
+
   return (
     <div
-      {...props}
+      {...nestedProps}
       className={transformClassName(`lb-avatar
                   lb-avatar--${size}
                   lb-avatar--${variant}
